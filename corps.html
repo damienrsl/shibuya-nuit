@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Shibuya la nuit : ça vaut les 40 minutes ?</title>
+<style>
+/*KIT*/
+main{max-width:680px;margin:0 auto;position:relative;z-index:1;padding:0 16px 60px}
+.hero{padding:56px 4px 20px;position:relative}
+.hero .orbe{--d:70px;position:absolute;right:6px;top:44px;animation:souffle 6s ease-in-out infinite}
+.hero h1{font-size:33px;line-height:1.08;letter-spacing:-.03em;max-width:14ch}
+.hero p{margin:16px 0 0;font-size:17px;line-height:1.5;max-width:36ch;color:var(--texte-2)}
+b{color:var(--texte)}
+.photo{border-radius:var(--r-l);overflow:hidden;margin:18px 0 0;position:relative}
+.photo img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.photo figcaption{font-size:13px;color:var(--texte-3);padding:8px 4px 0;line-height:1.4}
+section{margin:34px 0}
+section>.etiquette{display:block;margin:0 4px 10px}
+.carte{padding:20px;margin-bottom:12px}
+.carte h2{font-size:24px;letter-spacing:-.02em;line-height:1.15}
+.carte>p{margin:10px 0 0;line-height:1.55;color:var(--texte-2);font-size:16px}
+.franc{border-left:2px solid var(--pan-2);padding:14px 16px;margin:14px 0 0;color:var(--texte-2);font-size:15px;line-height:1.5;border-radius:0 var(--r-m) var(--r-m) 0;background:rgba(40,95,255,.06)}
+ul.liste{margin:12px 0 0;padding:0;list-style:none}
+ul.liste li{padding:11px 0;border-top:1px solid var(--filet);font-size:15px;line-height:1.5;color:var(--texte-2)}
+ul.liste li:first-child{border-top:0;padding-top:4px}
+.mot{display:inline-block;background:rgba(40,95,255,.08);color:var(--pan-3);border-radius:6px;padding:0 6px;font-weight:600}
+.frise{margin:12px 0 0;padding:0;list-style:none;position:relative}
+.frise::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:1px;background:linear-gradient(180deg,var(--pan-2),rgba(40,95,255,.1))}
+.frise li{position:relative;padding:0 0 18px 26px}
+.frise li::before{content:"";position:absolute;left:0;top:7px;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle,#000 0 20%,#0a1a66 45%,#285FFF 80%,#8AA8FF 100%)}
+.frise .an{font:600 12px var(--police-mono);color:var(--pan-3);letter-spacing:.06em}
+.frise h3{font-size:17px;margin:2px 0 0;line-height:1.3}
+.frise p{margin:4px 0 0;font-size:15px;line-height:1.5;color:var(--texte-2)}
+.frise .photo{margin:10px 0 4px}
+.carte-stat{display:block;width:100%;height:auto;margin-top:14px;border-radius:var(--r-l);border:1px solid var(--filet)}
+.rives{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.rives .verre{padding:14px;border-radius:var(--r-l)}
+.rives h3{font-size:17px}
+.rives p{margin:6px 0 0;font-size:14px;line-height:1.45;color:var(--texte-2)}
+.rives img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;margin-bottom:10px}
+.sortie{display:block;border-radius:var(--r-l);overflow:hidden;margin:14px 0 0;background:rgba(255,255,255,.6);border:1px solid var(--filet)}
+.sortie img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.sortie .corps{padding:14px 16px 16px}
+.num{font:600 12px var(--police-mono);color:var(--pan-3);letter-spacing:.06em}
+.sortie h3{font-size:19px;margin-top:2px;line-height:1.2}
+.sortie .sous{margin:2px 0 0;font-size:14px;color:var(--texte-3)}
+.sortie p{margin:8px 0 0;font-size:15px;line-height:1.5;color:var(--texte-2)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.metro{font:600 11px var(--police-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--pan-3);background:rgba(40,95,255,.08);padding:6px 10px;border-radius:999px}
+.plans{font:600 13px var(--police);color:#fff;text-decoration:none;background:linear-gradient(135deg,var(--bleu-chat),var(--bleu-renard));padding:7px 14px;border-radius:999px;box-shadow:0 6px 16px -6px rgba(36,54,184,.6)}
+.grille{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.grille .verre{padding:0 0 12px;border-radius:var(--r-l);overflow:hidden}
+.grille img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.grille h3{font-size:15px;line-height:1.25;margin:10px 12px 0}
+.grille p{margin:6px 12px 0;font-size:13px;line-height:1.45;color:var(--texte-2)}
+.puces{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.puce{background:rgba(255,255,255,.7);border:1px solid var(--filet);color:var(--texte-2);font:500 14px var(--police);padding:9px 14px;border-radius:var(--r-pilule);cursor:pointer;transition:all .3s var(--ressort);-webkit-tap-highlight-color:transparent}
+.puce.on{color:#fff;border-color:transparent;background:linear-gradient(135deg,var(--bleu-chat),var(--bleu-renard));box-shadow:0 6px 16px -6px rgba(36,54,184,.6);transform:scale(1.04)}
+.envie{display:none;margin-top:14px;font-size:15px;line-height:1.55;color:var(--texte-2)}
+.envie.vu{display:block}
+.pied{font-size:12px;color:var(--texte-3);line-height:1.6;margin:40px 4px 0}
+.pied a{color:var(--texte-3)}
+@media (max-width:420px){.grille,.rives{grid-template-columns:1fr}.hero h1{font-size:29px}}
+.pm{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.pm div{border-radius:var(--r-m);padding:12px 14px;font-size:15px;line-height:1.5;color:var(--texte-2)}
+.pm .plus{background:rgba(40,95,255,.08)}
+.pm .moins{background:rgba(10,20,60,.04);border:1px solid var(--filet)}
+.pm h4{font:600 12px var(--police-mono);letter-spacing:.06em;text-transform:uppercase;margin:0 0 4px;color:var(--pan-3)}
+.pm .moins h4{color:var(--texte-3)}
+.note{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+@media (max-width:420px){.pm{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <span class="orbe"></span>
+    <span class="etiquette">Tokyo · lundi 16 novembre 2026</span>
+    <h1>Shibuya la nuit : ça vaut les 40 minutes ?</h1>
+    <p><b>Oui, si tu pars maintenant.</b> Il est 19 h 50 : tu arrives vers 20 h 30 et tu as 3 heures avant le dernier train. Le meilleur de Shibuya est gratuit et tient dans ce temps-là.</p>
+  </header>
+
+  <section>
+    <span class="etiquette">Le verdict</span>
+    <div class="verre carte">
+      <h2>40 minutes, c'est normal à Tokyo</h2>
+      <p>Tout le monde fait 30 à 45 minutes de train pour sortir. Ce qui coûte cher, c'est de rater le dernier train : <b>vers minuit, minuit et demi</b> selon ta ligne. Après, le taxi pour 40 minutes de trajet coûte facilement <b>8 000 à 12 000 ¥</b> (50 à 75 €).</p>
+      <div class="pm">
+        <div class="plus"><h4>Pour y aller</h4>Les néons sont allumés, c'est l'heure où Shibuya est le plus beau. Le carrefour la nuit, c'est l'image de Tokyo, et c'est filmable pour la série.</div>
+        <div class="moins"><h4>Contre</h4>Tu sors d'un vol de nuit. On est lundi : bars et clubs tournent au ralenti. Les boutiques de fringues ferment vers 20 h - 21 h.</div>
+      </div>
+      <p class="franc">Mon avis : vas-y ce soir pour le carrefour, la vue et un dîner. Si tu pars après 21 h, garde ça pour demain. Garde les clubs et le shopping de nuit pour un vendredi ou un samedi.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">Ce soir, j'ai envie de…</span>
+    <div class="verre carte">
+      <h2>Choisis, je te dis où aller</h2>
+      <div class="puces">
+        <button class="puce" data-k="vue">Voir Tokyo d'en haut</button>
+        <button class="puce" data-k="manger">Manger et boire un coup</button>
+        <button class="puce" data-k="filmer">Filmer</button>
+        <button class="puce" data-k="fete">Faire la fête</button>
+        <button class="puce" data-k="fatigue">Je suis crevé</button>
+      </div>
+      <p class="envie" data-k="vue"><b>Shibuya Sky</b>, dernière entrée à 21 h 20 : pars tout de suite et réserve dans le train. Complet ? La terrasse du <b>Magnet by Shibuya109</b>, juste au-dessus du carrefour, coûte bien moins cher.</p>
+      <p class="envie" data-k="manger"><b>Shibuya Yokocho</b> (sous Miyashita Park) pour un dîner animé à deux, puis un verre à <b>Nonbei Yokocho</b>, la ruelle des petits bars.</p>
+      <p class="envie" data-k="filmer">Le carrefour vu d'en haut (Magnet ou Shibuya Sky), puis <b>Center Gai</b> en marchant. La ruelle Nonbei Yokocho donne les meilleurs plans serrés.</p>
+      <p class="envie" data-k="fete">Lundi, c'est calme. Plan sûr : un <b>karaoké</b> en salle privée à deux (Big Echo, Karaoke-kan), à l'heure. Les clubs, garde-les pour le week-end.</p>
+      <p class="envie" data-k="fatigue">Carrefour, un ramen chez <b>Ichiran</b> (ouvert tard), Don Quijote pour les bêtises, et tu reprends le train vers 23 h. Ça vaut quand même le trajet.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">Les activités, une par une</span>
+
+    <div class="verre carte">
+      <span class="num">01 · GRATUIT · 15 MIN</span>
+      <h2>Le carrefour (Scramble Crossing)</h2>
+      <p>Jusqu'à 3 000 personnes traversent à chaque feu vert, sous les écrans géants.</p>
+      <div class="pm">
+        <div class="plus"><h4>Points forts</h4>Gratuit, iconique, encore plus fou la nuit. Le plan que tout le monde reconnaît.</div>
+        <div class="moins"><h4>Points faibles</h4>15 minutes suffisent. Bondé de touristes qui filment, dur de se poser.</div>
+      </div>
+    </div>
+
+    <div class="verre carte">
+      <span class="num">02 · PAYANT · 1 H</span>
+      <h2>Shibuya Sky (toit à 230 m)</h2>
+      <p>Terrasse à ciel ouvert sur la tour Scramble Square. Ouverte de 10 h à 22 h 30, dernière entrée 21 h 20.</p>
+      <div class="pm">
+        <div class="plus"><h4>Points forts</h4>La plus belle vue de nuit sur Tokyo, avec le carrefour en bas et la tour de Tokyo au loin.</div>
+        <div class="moins"><h4>Points faibles</h4>Autour de 2 500 - 3 400 ¥ (prix à vérifier). Ce soir, dernière entrée 21 h 20 : c'est serré, réserve en ligne.</div>
+      </div>
+    </div>
+
+    <div class="verre carte">
+      <span class="num">03 · 1 À 2 VERRES</span>
+      <h2>Nonbei Yokocho, la ruelle des petits bars</h2>
+      <p>Une quarantaine de bars minuscules le long des voies, à 2 minutes de la gare.</p>
+      <div class="pm">
+        <div class="plus"><h4>Points forts</h4>L'ambiance Tokyo d'avant, des patrons qui parlent aux clients, très photogénique.</div>
+        <div class="moins"><h4>Points faibles</h4>6 à 8 places par bar, souvent pleins. Droit d'entrée fréquent (500 à 1 000 ¥) en plus des verres.</div>
+      </div>
+    </div>
+
+    <div class="verre carte">
+      <span class="num">04 · DÎNER · 1 À 2 H</span>
+      <h2>Shibuya Yokocho (Miyashita Park)</h2>
+      <p>Une rue couverte d'izakayas, un stand par région du Japon, ouvert tard.</p>
+      <div class="pm">
+        <div class="plus"><h4>Points forts</h4>Facile, animé, parfait à deux. Tu goûtes plusieurs régions en un repas.</div>
+        <div class="moins"><h4>Points faibles</h4>Bruyant et assez touristique. Un peu de queue vers 19 h - 20 h.</div>
+      </div>
+    </div>
+
+    <div class="verre carte">
+      <span class="num">05 · BALADE · 30 MIN</span>
+      <h2>Center Gai et Dogenzaka</h2>
+      <p>Les rues à néons derrière le carrefour : izakayas, salles d'arcade, photomatons purikura.</p>
+      <div class="pm">
+        <div class="plus"><h4>Points forts</h4>L'énergie de Shibuya, des arcades (Taito Station, GiGO) pour s'amuser 20 minutes.</div>
+        <div class="moins"><h4>Points faibles</h4>Rabatteurs qui t'invitent dans des bars : ne suis jamais personne, l'addition peut exploser.</div>
+      </div>
+    </div>
+
+    <div class="verre carte">
+      <span class="num">06 · À DEUX · 1 À 3 H</span>
+      <h2>Karaoké en salle privée</h2>
+      <p>Big Echo, Karaoke-kan : une salle rien que pour vous, payée à l'heure, boissons comprises en option.</p>
+      <div class="pm">
+        <div class="plus"><h4>Points forts</h4>Le vrai loisir du soir des Japonais, marrant même à deux, pas cher.</div>
+        <div class="moins"><h4>Points faibles</h4>Pas une sortie « ville » : tu es dans une pièce fermée. Le forfait nuit te fait rater le dernier train.</div>
+      </div>
+    </div>
+
+    <div class="verre carte">
+      <span class="num">07 · SHOPPING · 1 H</span>
+      <h2>Shopping du soir</h2>
+      <p>Don Quijote ouvert 24 h, Parco (Nintendo, Pokémon), Shibuya 109, Tsutaya.</p>
+      <div class="pm">
+        <div class="plus"><h4>Points forts</h4>Don Quijote est un spectacle à lui seul, et il reste ouvert toute la nuit.</div>
+        <div class="moins"><h4>Points faibles</h4>Les boutiques de mode et de vintage ferment vers 20 h - 21 h. Pour tes repérages fringues, viens en journée.</div>
+      </div>
+    </div>
+
+    <div class="verre carte">
+      <span class="num">08 · TARD · WEEK-END</span>
+      <h2>Clubs (Womb, Harlem…)</h2>
+      <p>La fête dure jusqu'au premier train, vers 5 h du matin.</p>
+      <div class="pm">
+        <div class="plus"><h4>Points forts</h4>De grosses salles, des DJ internationaux le week-end.</div>
+        <div class="moins"><h4>Points faibles</h4>Lundi, c'est presque vide. Entrée 2 000 à 4 000 ¥. Avec le décalage horaire, c'est la pire idée de ce soir.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">À savoir avant de partir</span>
+    <div class="verre carte">
+      <h2>Trois règles</h2>
+      <ul class="liste">
+        <li><b>Boire dans la rue est interdit</b> autour de la gare de Shibuya, tous les jours de 18 h à 5 h. Bois au bar, pas sur le trottoir.</li>
+        <li><b>Regarde l'heure du dernier train</b> dans Google Maps en arrivant, et mets une alarme 30 minutes avant.</li>
+        <li><b>Ne suis aucun rabatteur</b> dans un bar, même sympa : c'est l'arnaque classique du quartier.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="pied">Horaires de Shibuya Sky : Go Tokyo (site officiel du tourisme). Interdiction de boire dans la rue : Asahi Shimbun. Prix des bars, taxis et clubs : ordres de grandeur, à vérifier sur place.</p>
+</main>
+<script>
+document.querySelectorAll('.puce').forEach(function(b){b.addEventListener('click',function(){
+  var k=b.dataset.k;
+  document.querySelectorAll('.puce').forEach(function(x){x.classList.toggle('on',x===b)});
+  document.querySelectorAll('.envie').forEach(function(p){p.classList.toggle('vu',p.dataset.k===k)});
+})});
+</script>
+</body>
+</html>
